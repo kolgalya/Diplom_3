@@ -32,7 +32,7 @@ class BasePage:
 
     @allure.step('Клик по крестику')
     def click_exit(self, locator):
-        element = WDW(self.driver, 20).until(EC.visibility_of_element_located(locator))
+        element = self.wait(locator)
         self.driver.execute_script("arguments[0].click();", element)
 
     @allure.step('Клик по элементу')

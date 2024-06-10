@@ -1,12 +1,11 @@
 import pytest
-import random
-import string
+import help
 import allure
 import requests
 from selenium import webdriver
 
 @allure.step('Открытие браузера в полноэкранном режиме')
-@pytest.fixture(params=['Chrome','Firefox']) #'Chrome','Firefox'
+@pytest.fixture(params=['Chrome'])#,'Firefox']) #'Chrome','Firefox'
 def driver(request):
     browser = None
     if request.param == 'Chrome':
@@ -17,18 +16,12 @@ def driver(request):
     yield browser
     browser.quit()
 
-@allure.step('Генерируем случайную строку')
-def generate_random_string(length):
-    letters = string.ascii_lowercase
-    random_string = ''.join(random.choice(letters) for i in range(length))
-    return random_string
-
 @allure.step('Создание пользователя и удаление его после теста')
 @pytest.fixture
 def create_user():
-    email = generate_random_string(5) + '@mail.ru'
-    password = generate_random_string(6)
-    name = generate_random_string(5)
+    email = help.generate_random_string(5) + '@mail.ru'
+    password = help.generate_random_string(6)
+    name = help.generate_random_string(5)
     user_data = {
         "email": email,
         "password": password,

@@ -5,7 +5,7 @@ import requests
 from selenium import webdriver
 
 @allure.step('Открытие браузера в полноэкранном режиме')
-@pytest.fixture(params=['Chrome'])#,'Firefox']) #'Chrome','Firefox'
+@pytest.fixture(params=['Chrome','Firefox']) #'Chrome','Firefox'
 def driver(request):
     browser = None
     if request.param == 'Chrome':

@@ -42,7 +42,7 @@ class TestOrderPage:
         assert order_number in order_feed_page.get_text_last_order()
 
     @allure.title('При создании нового заказа счётчик Выполнено за всё время увеличивается')
-    def test_counter_increased_completed_all_time(self, driver, create_user): #no
+    def test_counter_increased_completed_all_time(self, driver, create_user):
         user_data = create_user[1]
         main_page = MP(driver)
         main_page.open_page(Urls.url)
@@ -64,7 +64,7 @@ class TestOrderPage:
         assert counter < counter_after
 
     @allure.title('При создании нового заказа счётчик Выполнено за сегодня увеличивается')
-    def test_completed_today_counter_increasing(self, driver, create_user): # no
+    def test_completed_today_counter_increasing(self, driver, create_user):
         user_data = create_user[1]
         main_page = MP(driver)
         main_page.open_page(Urls.url)
